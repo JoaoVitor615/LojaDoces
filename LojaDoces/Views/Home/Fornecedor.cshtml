@@ -1,0 +1,62 @@
+﻿@model LojaDoces.Models.Fornecedor
+@{
+    ViewBag.Title = "Fornecedor";
+}
+
+<h2>Fornecedores</h2>
+@using (Html.BeginForm("FornCadastrados", "Home", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Cadastro:</legend>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(m => m.codForn)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(m => m.codForn)
+            @Html.ValidationMessageFor(m => m.codForn)
+        </div>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(m => m.nomeForn)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(m => m.nomeForn)
+            @Html.ValidationMessageFor(m => m.nomeForn)
+        </div>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(m => m.enderecoForn)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(m => m.enderecoForn)
+            @Html.ValidationMessageFor(m => m.enderecoForn)
+        </div>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(m => m.telefoneForn)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(m => m.telefoneForn)
+            @Html.ValidationMessageFor(m => m.telefoneForn)
+        </div>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(m => m.emailForn)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(m => m.emailForn)
+            @Html.ValidationMessageFor(m => m.emailForn)
+        </div>
+        <div>
+            <br /> <input type="submit" value="Cadastrar" name="btnenviar" />
+        </div>
+    </fieldset>
+
+}

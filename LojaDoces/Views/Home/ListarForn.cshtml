@@ -1,0 +1,32 @@
+﻿@model IEnumerable<LojaDoces.Models.Fornecedor>
+@{
+    ViewBag.Title = "ListarForn";
+}
+<p>@Html.ActionLink("Cadastrar Fornecedor", "Fornecedor", "Home")</p>
+
+
+<table>
+    <tr>
+        <th>@Html.DisplayNameFor(m => m.codForn)</th>
+        <th>@Html.DisplayNameFor(m => m.nomeForn)</th>
+        <th>@Html.DisplayNameFor(m => m.enderecoForn)</th>
+        <th>@Html.DisplayNameFor(m => m.telefoneForn)</th>
+        <th>@Html.DisplayNameFor(m => m.emailForn)</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.codForn)</td>
+            <td>@Html.DisplayFor(modelItem => item.nomeForn)</td>
+            <td>@Html.DisplayFor(modelItem => item.enderecoForn)</td>
+            <td>@Html.DisplayFor(modelItem => item.telefoneForn)</td>
+            <td>@Html.DisplayFor(modelItem => item.emailForn)</td>
+
+            <td>
+                @Html.ActionLink("Alterar", "AltForn", null, new { codForn = item.codForn }, new { @class = "btn btn-primary btn-xs" })
+                @Html.ActionLink("Deletar", "DelForn", null, new { codForn = item.codForn }, new { @class = "btn btn-danger btn-xs" })
+            </td>
+        </tr>
+    }
+
+</table>

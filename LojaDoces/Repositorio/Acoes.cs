@@ -15,23 +15,22 @@ namespace LojaDoces.Repositorio
 
         public void CadastrarDoce(Doces doces)
         {
-              /*
-                create table tbl_doces
-                (
-                id_Doce int primary key not null,
-                tipo_Doce varchar(30) not null,
-                fabricante_Doce varchar(50) not null,
-                peso_Doce int not null,
-                estoque_Doce int not null
-                );
-             */
+            /*
+                iddoce int primary key not null,
+                tipodoce varchar(30) not null,
+                fabricantedoce varchar(50) not null,
+                pesodoce int not null,
+                estoquedoce int not null	*/
 
-            MySqlCommand cmd = new MySqlCommand("insert into tbl_doces values(@id_Doce, @tipo_Doce, @fabricante_Doce, @peso_Doce, @estoque_Doce", con.ConectarBd());
-            cmd.Parameters.Add("@id_Doce", MySqlDbType.VarChar).Value = doces.codDoce;
-            cmd.Parameters.Add("@tipo_Doce", MySqlDbType.VarChar).Value = doces.tipoDoce;
-            cmd.Parameters.Add("@fabricante_Doce", MySqlDbType.VarChar).Value = doces.fornecedorDoce;
-            cmd.Parameters.Add("@peso_Doce", MySqlDbType.VarChar).Value = doces.pesoDoce;
-            cmd.Parameters.Add("@estoque_Doce", MySqlDbType.VarChar).Value = doces.estoqDoce;
+
+
+            MySqlCommand cmd = new MySqlCommand("insert into tbl_doces values(@iddoce, @tipodoce," +
+                "@fabricantedoce, @pesodoce, @estoquedoce)", con.ConectarBd());
+            cmd.Parameters.Add("@iddoce", MySqlDbType.VarChar).Value = doces.codDoce;
+            cmd.Parameters.Add("@tipodoce", MySqlDbType.VarChar).Value = doces.tipoDoce;
+            cmd.Parameters.Add("@fabricantedoce", MySqlDbType.VarChar).Value = doces.fornecedorDoce;
+            cmd.Parameters.Add("@pesodoce", MySqlDbType.VarChar).Value = doces.pesoDoce;
+            cmd.Parameters.Add("@estoquedoce", MySqlDbType.VarChar).Value = doces.estoqDoce;
             cmd.ExecuteNonQuery();
             con.DesconectarBd();
 
@@ -39,7 +38,7 @@ namespace LojaDoces.Repositorio
 
         public Doces ListarCodDoces(int cod)
         {
-            var comando = String.Format("select * from tbl_doces where id_Doce = {0}", cod);
+            var comando = String.Format("select * from tbl_doces where codDoce = {0}", cod);
             MySqlCommand cmd = new MySqlCommand(comando, con.ConectarBd());
             var DadosDoce = cmd.ExecuteReader();
             return ListCodDoces(DadosDoce).FirstOrDefault();
@@ -52,11 +51,11 @@ namespace LojaDoces.Repositorio
             {
                 var AlTemp = new Doces()
                 {
-                    codDoce = int.Parse(dt["id_Doce"].ToString()),
-                    tipoDoce = dt["tipo_Doce"].ToString(),
-                    fornecedorDoce = dt["fabricante_Doce"].ToString(),
-                    pesoDoce = int.Parse(dt["peso_Doce"].ToString()),
-                    estoqDoce = int.Parse(dt["estoque_Doce"].ToString()),
+                    codDoce = int.Parse(dt["iddoce"].ToString()),
+                    tipoDoce = dt["tipodoce"].ToString(),
+                    fornecedorDoce = dt["fabricantedoce"].ToString(),
+                    pesoDoce = int.Parse(dt["pesodoce"].ToString()),
+                    estoqDoce = int.Parse(dt["estoquedoce"].ToString()),
                 };
                 AltAl.Add(AlTemp);
             }
@@ -79,11 +78,11 @@ namespace LojaDoces.Repositorio
             {
                 var DocesTemp = new Doces()
                 {
-                    codDoce = int.Parse(dt["id_Doce"].ToString()),
-                    tipoDoce = dt["tipo_Doce"].ToString(),
-                    fornecedorDoce = dt["fabricante_Doce"].ToString(),
-                    pesoDoce = int.Parse(dt["peso_Doce"].ToString()),
-                    estoqDoce = int.Parse(dt["estoque_Doce"].ToString()),
+                    codDoce = int.Parse(dt["iddoce"].ToString()),
+                    tipoDoce = dt["tipodoce"].ToString(),
+                    fornecedorDoce = dt["fabricantedoce"].ToString(),
+                    pesoDoce = int.Parse(dt["pesodoce"].ToString()),
+                    estoqDoce = int.Parse(dt["estoquedoce"].ToString()),
                 };
                 TodosDoces.Add(DocesTemp);
             }
@@ -94,77 +93,79 @@ namespace LojaDoces.Repositorio
         //FORNECEDOR 
 
         /*
-            id_fornecedor int primary key not null,
-            nome_Fornecedor varchar(50) not null,
-            endereco_Fornecedor varchar(50) not null,
-            telefone_Fornecedor varchar(14) not null,
-            email_Fornecedor varchar(60) not null
-         */
-
+            idfornecedor int primary key not null,
+nomefornecedor varchar(50) not null,
+enderecofornecedor varchar(50) not null,
+telefonefornecedor varchar(14) not null,
+emailfornecedor varchar(60) not null
+         
+        */
         public void CadastrarFornecedor(Fornecedor fornecedor)
         {
-            MySqlCommand cmd = new MySqlCommand("insert into tbl_fornecedor values(@id_fornecedor, @nome_Fornecedor, @endereco_Fornecedor, @telefone_Fornecedor, @email_Fornecedor,", con.ConectarBd());
-            cmd.Parameters.Add("@id_fornecedor", MySqlDbType.VarChar).Value = fornecedor.codForn;
-            cmd.Parameters.Add("@nome_Fornecedor", MySqlDbType.VarChar).Value = fornecedor.nomeForn;
-            cmd.Parameters.Add("@endereco_Fornecedor", MySqlDbType.VarChar).Value = fornecedor.enderecoForn;
-            cmd.Parameters.Add("@telefone_Fornecedor", MySqlDbType.VarChar).Value = fornecedor.telefoneForn;
-            cmd.Parameters.Add("@email_Fornecedor", MySqlDbType.VarChar).Value = fornecedor.emailForn;
+            MySqlCommand cmd = new MySqlCommand("insert into tbl_fornecedor values(@idfornecedor, @nomefornecedor," +
+                "@enderecofornecedor, @telefonefornecedor, @emailfornecedor)", con.ConectarBd());
+            cmd.Parameters.Add("@idfornecedor", MySqlDbType.VarChar).Value = fornecedor.codForn;
+            cmd.Parameters.Add("@nomefornecedor", MySqlDbType.VarChar).Value = fornecedor.nomeForn;
+            cmd.Parameters.Add("@enderecofornecedor", MySqlDbType.VarChar).Value = fornecedor.enderecoForn;
+            cmd.Parameters.Add("@telefonefornecedor", MySqlDbType.VarChar).Value = fornecedor.telefoneForn;
+            cmd.Parameters.Add("@emailfornecedor", MySqlDbType.VarChar).Value = fornecedor.emailForn;
             cmd.ExecuteNonQuery();
             con.DesconectarBd();
         }
 
-        public Fornecedor ListarCodJogo(int cod)
+        public Fornecedor ListarCodForn(int cod)
         {
             var comando = String.Format("select * from tbl_fornecedor where codForn = {0}", cod);
             MySqlCommand cmd = new MySqlCommand(comando, con.ConectarBd());
-            var DadosFornecedor = cmd.ExecuteReader();
-            return ListCodJogo(DadosFornecedor).FirstOrDefault();
+            var DadosForn = cmd.ExecuteReader();
+            return ListCodForn(DadosForn).FirstOrDefault();
         }
 
-        public List<Fornecedor> ListCodJogo(MySqlDataReader dt)
+        public List<Fornecedor> ListCodForn(MySqlDataReader dt)
         {
             var AltAl = new List<Fornecedor>();
             while (dt.Read())
             {
-                var FornecedorTemp = new Fornecedor()
+                var FornTemp = new Fornecedor()
                 {
-                    codForn = int.Parse(dt["id_fornecedor"].ToString()),
-                    nomeForn = dt["nome_Fornecedor"].ToString(),
-                    enderecoForn = dt["endereco_Fornecedor"].ToString(),
-                    telefoneForn = dt["telefone_Fornecedor"].ToString(),
-                    emailForn = dt["email_Fornecedor"].ToString(),
+                    codForn = int.Parse(dt["idfornecedor"].ToString()),
+                    nomeForn = dt["nomefornecedor"].ToString(),
+                    enderecoForn = dt["enderecofornecedor"].ToString(),
+                    telefoneForn = dt["telefonefornecedor"].ToString(),
+                    emailForn = dt["emailfornecedor"].ToString(),
                 };
-                AltAl.Add(FornecedorTemp);
+                AltAl.Add(FornTemp);
             }
 
             dt.Close();
             return AltAl;
         }
 
-        public List<Fornecedor> ListarJogo()
+        public List<Fornecedor> ListarForn()
         {
             MySqlCommand cmd = new MySqlCommand("Select * from tbl_fornecedor ", con.ConectarBd());
-            var DadosFornecedor = cmd.ExecuteReader();
-            return ListarTodosFornecedor(DadosFornecedor);
+            var DadosForn = cmd.ExecuteReader();
+            return ListarTodosForn(DadosForn);
         }
 
-        public List<Fornecedor> ListarTodosFornecedor(MySqlDataReader dt)
+        public List<Fornecedor> ListarTodosForn(MySqlDataReader dt)
         {
-            var TodosFornecedor = new List<Fornecedor>();
+            var TodosForn = new List<Fornecedor>();
             while (dt.Read())
             {
-                var FornecedorTemp = new Fornecedor()
+                var FornTemp = new Fornecedor()
                 {
-                    codForn = int.Parse(dt["id_fornecedor"].ToString()),
-                    nomeForn = dt["nome_Fornecedor"].ToString(),
-                    enderecoForn = dt["endereco_Fornecedor"].ToString(),
-                    telefoneForn = dt["telefone_Fornecedor"].ToString(),
-                    emailForn = dt["email_Fornecedor"].ToString(),
+                    codForn = int.Parse(dt["idfornecedor"].ToString()),
+                    nomeForn = dt["nomefornecedor"].ToString(),
+                    enderecoForn = dt["enderecofornecedor"].ToString(),
+                    telefoneForn = dt["telefonefornecedor"].ToString(),
+                    emailForn = dt["emailfornecedor"].ToString(),
                 };
-                TodosFornecedor.Add(FornecedorTemp);
+                TodosForn.Add(FornTemp);
             }
             dt.Close();
-            return TodosFornecedor;
+            return TodosForn;
         }
+        
     }
 }

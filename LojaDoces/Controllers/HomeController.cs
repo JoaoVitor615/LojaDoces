@@ -16,17 +16,17 @@ namespace LojaDoces.Controllers
         }
 
 
-        Acoes ac = new Acoes();
-
         public ActionResult Doces()
         {
             var doces = new Doces();
             return View(doces);
         }
 
+        Acoes ac = new Acoes();
 
         [HttpPost]
-        public ActionResult CadDoces(Doces doces)
+
+        public ActionResult DocesCadastrados(Doces doces)
         {
             ac.CadastrarDoce(doces);
             return View(doces);
@@ -37,6 +37,30 @@ namespace LojaDoces.Controllers
             var ExibeDoces = new Acoes();
             var TodosDoces = ExibeDoces.ListarDoces();
             return View(TodosDoces);
+        }
+
+
+        //FORNECEDOR
+
+        public ActionResult Fornecedor()
+        {
+            var fornecedor = new Fornecedor();
+            return View(fornecedor);
+        }
+
+        [HttpPost]
+
+        public ActionResult FornCadastrados(Fornecedor fornecedor)
+        {
+            ac.CadastrarFornecedor(fornecedor);
+            return View(fornecedor);
+        }
+
+        public ActionResult ListarForn()
+        {
+            var ExibeForn = new Acoes();
+            var TodosForn = ExibeForn.ListarForn();
+            return View(TodosForn);
         }
     }
 }

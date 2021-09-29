@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<LojaDoces.Models.Doces>
 @{
-    ViewBag.Title = "ListaDoces";
+    ViewBag.Title = "ListarDoces";
 }
-<p>@Html.ActionLink("Cadastrar Doce", "Doce")</p>
+<p>@Html.ActionLink("Cadastrar Doce", "Doce", "Home")</p>
 
 <table>
     <tr>
@@ -26,7 +26,6 @@
                 @Html.ActionLink("Deletar", "DelDoce", null, new { cdDoce = item.codDoce }, new { @class = "btn btn-danger btn-xs" })
             </td>
         </tr>
-}
+    }
 
 </table>
-

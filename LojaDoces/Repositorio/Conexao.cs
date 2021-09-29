@@ -10,7 +10,7 @@ namespace LojaDoces.Repositorio
     public class Conexao
     {
 
-        MySqlConnection cn = new MySqlConnection("Server=localhost;DataBase=loja_doces;user=root;pwd=06012005");
+        MySqlConnection cn = new MySqlConnection("Server=localhost;DataBase=loja_doces;user=doceiro;pwd=12345678");
         public static string msg;
 
         public MySqlConnection ConectarBd()

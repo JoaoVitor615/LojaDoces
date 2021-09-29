@@ -167,7 +167,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Doces.cshtml" />
     <Content Include="Views\Home\DocesCadastrados.cshtml" />
-    <Content Include="Views\Home\ListaDoces.cshtml" />
+    <Content Include="Views\Home\ListarDoces.cshtml" />
+    <Content Include="Views\Home\FornCadastrados.cshtml" />
+    <Content Include="Views\Home\Fornecedor.cshtml" />
+    <Content Include="Views\Home\ListarForn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
